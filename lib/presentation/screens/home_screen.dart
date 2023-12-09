@@ -4,6 +4,7 @@ import 'dart:convert';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+  static const route = '/home_screen';
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -66,61 +67,57 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.green,
-        title: const Text("Drug Search"),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Image(
-                  height: 200,
-                  image: AssetImage('assets/logo.png'),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.horizontal(
-                      left: Radius.circular(30), // Adjust the value as needed
-                      right: Radius.circular(30), // Adjust the value as needed
-                    ),
-                    color: Colors.grey[200], // Adjust the background color as needed
+    return SafeArea(
+      child: Scaffold(
+        body: Center(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                children: [
+                  const Image(
+                    //height: 200,
+                    image: AssetImage('assets/logo.png'),
                   ),
-                  child: SizedBox(
-                    width: double.infinity, // Adjust the width as needed
-                    child: TextField(
-                      controller: _searchController,
-                      textAlign: TextAlign.center,
-                      textAlignVertical: TextAlignVertical.center,
-                      style: const TextStyle(color: Colors.black),
-                      decoration: InputDecoration(
-                        hintText: "Search for drugs...",
-                        hintStyle: const TextStyle(color: Colors.black),
-                        contentPadding: const EdgeInsets.symmetric(horizontal: 20),
-                        border: InputBorder.none, // Remove default border
-                        suffixIcon: IconButton(
-                          icon: const Icon(Icons.search, color: Colors.green),
-                          onPressed: () {
-                            // Handle search button press
-                            _handleSearch(_searchController.text);
-                          },
-                        ),
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.horizontal(
+                        left: Radius.circular(30), // Adjust the value as needed
+                        right: Radius.circular(30), // Adjust the value as needed
                       ),
-                      onChanged: (value) {
-                        // Update suggestions dynamically based on user input
-                        _updateSuggestions(value);
-                      },
+                      color: Colors.grey[200], // Adjust the background color as needed
+                    ),
+                    child: SizedBox(
+                      width: double.infinity, // Adjust the width as needed
+                      child: TextField(
+                        controller: _searchController,
+                        textAlign: TextAlign.center,
+                        textAlignVertical: TextAlignVertical.center,
+                        style: const TextStyle(color: Colors.black),
+                        decoration: InputDecoration(
+                          hintText: "Search for drugs...",
+                          hintStyle: const TextStyle(color: Colors.black),
+                          contentPadding: const EdgeInsets.symmetric(horizontal: 20),
+                          border: InputBorder.none, // Remove default border
+                          suffixIcon: IconButton(
+                            icon: const Icon(Icons.search, color: Colors.green),
+                            onPressed: () {
+                              // Handle search button press
+                              _handleSearch(_searchController.text);
+                            },
+                          ),
+                        ),
+                        onChanged: (value) {
+                          // Update suggestions dynamically based on user input
+                          _updateSuggestions(value);
+                        },
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 16),
-                _suggestedDrugs.isNotEmpty ? _buildSuggestions() : Container(),
-              ],
+                  const SizedBox(height: 16),
+                  _suggestedDrugs.isNotEmpty ? _buildSuggestions() : Container(),
+                ],
+              ),
             ),
           ),
         ),
