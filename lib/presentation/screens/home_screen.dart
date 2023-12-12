@@ -195,51 +195,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _handleSearch(String drug) async {
     print("Searching for $_selectedDrug...");
-    final url = Uri.parse('https://api.fda.gov/drug/event.json?search=$drug');
-    final response = await http.get(url);
+    Map<String, dynamic> keyValuePairs = await fetchDataFromUrl(drug);
+    _showBottomSheet(drug, keyValuePairs);
 
-    if (response.statusCode == 200) {
-      final drugInfo = jsonDecode(response.body);
-      final string =
-          drugInfo['results'][0]['patient']['drug'][0]['medicinalproduct'];
-
-      _showBottomSheet(drug, string);
-    } else {
-      // _showBottomSheet('Error', "Failed to fetch drug information.");
-      showModalBottomSheet(
-        context: context,
-        builder: (BuildContext context) {
-          return Container(
-            padding: EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  'Error',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(height: 16),
-                Text(
-                  'Failed to fetch drug information.',
-                  style: TextStyle(fontSize: 16),
-                ),
-                SizedBox(height: 16),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pop(); // Close the bottom sheet
-                  },
-                  child: Text('OK'),
-                ),
-              ],
-            ),
-          );
-        },
-      );
-    }
   }
 
-  Future _showBottomSheet(String drug, String string) {
+  Future _showBottomSheet(String drug, Map<String, dynamic> keyValuePairs) {
     return showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -251,8 +212,42 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       builder: (BuildContext context) {
-        return CustomBottomSheet(drug: drug, text: string);
+        return CustomBottomSheet(drug: drug, keyValuePairs: keyValuePairs,);
       },
     );
+  }
+
+  Future<Map<String, dynamic>> fetchDataFromUrl(String item) async {
+    try {
+      final url = Uri.parse('https://api.fda.gov/drug/event.json?search=$item');
+      final response = await http.get(url);
+
+      if (response.statusCode == 200) {
+        final drugInfo = jsonDecode(response.body);
+
+        List<String> reaction = drugInfo['results'][0]['patient']['reaction'].map((element) => element['reactionmeddrapt']).toList().cast<String>();
+        String medicinal_product = drugInfo['results'][0]['patient']['drug'][0]['medicinalproduct'];
+        List<String> brand_name = drugInfo['results'][0]['patient']['drug'][0]['openfda']['brand_name'].map((element) => element).toList().cast<String>();
+        List<String> generic_name = drugInfo['results'][0]['patient']['drug'][0]['openfda']['generic_name'].map((element) => element.toString()).toList().cast<String>();
+        List<String> product_type = drugInfo['results'][0]['patient']['drug'][0]['openfda']['product_type'].map((element) => element.toString()).toList().cast<String>();
+        List<String> route = drugInfo['results'][0]['patient']['drug'][0]['openfda']['route'].map((element) => element.toString()).toList().cast<String>();
+        List<String> substance_name = drugInfo['results'][0]['patient']['drug'][0]['openfda']['substance_name'].map((element) => element.toString()).toList().cast<String>();
+
+
+        return {
+          'medicinal product': medicinal_product,
+          'product type': product_type,
+          'route': route,
+          'reaction': reaction,
+          'substance name': substance_name,
+          'generic name': generic_name,
+          'brand name': brand_name,
+        };
+      } else {
+        throw Exception('Failed to load data from the server');
+      }
+    } catch (e) {
+      return {'error': 'Something went wrong'};
+    }
   }
 }
