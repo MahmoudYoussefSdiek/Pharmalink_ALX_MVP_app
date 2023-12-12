@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'package:pharmalink/presentation/components/widgets/bottom_sheet.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
   static const route = '/home_screen';
@@ -83,9 +85,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     decoration: BoxDecoration(
                       borderRadius: const BorderRadius.horizontal(
                         left: Radius.circular(30), // Adjust the value as needed
-                        right: Radius.circular(30), // Adjust the value as needed
+                        right:
+                            Radius.circular(30), // Adjust the value as needed
                       ),
-                      color: Colors.grey[200], // Adjust the background color as needed
+                      color: Colors
+                          .grey[200], // Adjust the background color as needed
                     ),
                     child: SizedBox(
                       width: double.infinity, // Adjust the width as needed
@@ -93,11 +97,22 @@ class _HomeScreenState extends State<HomeScreen> {
                         controller: _searchController,
                         textAlign: TextAlign.center,
                         textAlignVertical: TextAlignVertical.center,
-                        style: const TextStyle(color: Colors.black),
+                          style: const TextStyle(
+                            color: Colors.black,
+                            // fontSize: 12,
+                            // fontWeight: FontWeight.w700,
+                            // letterSpacing: 0.50,
+                          ),
                         decoration: InputDecoration(
                           hintText: "Search for drugs...",
-                          hintStyle: const TextStyle(color: Colors.black),
-                          contentPadding: const EdgeInsets.symmetric(horizontal: 20),
+                          hintStyle: const TextStyle(
+                              color: Color(0xFF9098B1),
+                              fontSize: 12,
+                              fontWeight: FontWeight.w700,
+                              letterSpacing: 0.50,
+                          ),
+                          contentPadding:
+                              const EdgeInsets.symmetric(horizontal: 20),
                           border: InputBorder.none, // Remove default border
                           suffixIcon: IconButton(
                             icon: const Icon(Icons.search, color: Colors.green),
@@ -115,7 +130,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  _suggestedDrugs.isNotEmpty ? _buildSuggestions() : Container(),
+                  _suggestedDrugs.isNotEmpty
+                      ? _buildSuggestions()
+                      : Container(height: 200,),
                 ],
               ),
             ),
@@ -126,30 +143,42 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildSuggestions() {
-    return SizedBox(
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.vertical(
+          top: Radius.circular(20), // Adjust the value as needed
+          bottom: Radius.circular(20), // Adjust the value as needed
+        ),
+        color: Colors
+            .grey[200], // Adjust the background color as needed
+      ),
       height: 200,
+      width: double.infinity,
       child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: _suggestedDrugs
-              .map((drug) => GestureDetector(
-            onTap: () {
-              // Handle suggestion tap
-              setState(() {
-                _selectedDrug = drug;
-                _searchController.text = drug;
-                _suggestedDrugs.clear();
-              });
-            },
-            child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 8),
-              child: Text(
-                drug,
-                style: const TextStyle(fontSize: 16),
-              ),
-            ),
-          ))
-              .toList(),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: _suggestedDrugs
+                .map((drug) => GestureDetector(
+                      onTap: () {
+                        // Handle suggestion tap
+                        setState(() {
+                          _selectedDrug = drug;
+                          _searchController.text = drug;
+                          _suggestedDrugs.clear();
+                        });
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                        child: Text(
+                          drug,
+                          style: const TextStyle(fontSize: 16),
+                        ),
+                      ),
+                    ))
+                .toList(),
+          ),
         ),
       ),
     );
@@ -171,42 +200,59 @@ class _HomeScreenState extends State<HomeScreen> {
 
     if (response.statusCode == 200) {
       final drugInfo = jsonDecode(response.body);
+      final string =
+          drugInfo['results'][0]['patient']['drug'][0]['medicinalproduct'];
 
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text(drug),
-            content: Text(drugInfo['results'][0]['patient']['drug'][0]['medicinalproduct']),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop(); // Close the dialog
-                },
-                child: const Text('OK'),
-              ),
-            ],
-          );
-        },
-      );
+      _showBottomSheet(drug, string);
     } else {
-      showDialog(
+      // _showBottomSheet('Error', "Failed to fetch drug information.");
+      showModalBottomSheet(
         context: context,
         builder: (BuildContext context) {
-          return AlertDialog(
-            title: const Text('Error'),
-            content: const Text('Failed to fetch drug information.'),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop(); // Close the dialog
-                },
-                child: const Text('OK'),
-              ),
-            ],
+          return Container(
+            padding: EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'Error',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 16),
+                Text(
+                  'Failed to fetch drug information.',
+                  style: TextStyle(fontSize: 16),
+                ),
+                SizedBox(height: 16),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pop(); // Close the bottom sheet
+                  },
+                  child: Text('OK'),
+                ),
+              ],
+            ),
           );
         },
       );
     }
+  }
+
+  Future _showBottomSheet(String drug, String string) {
+    return showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      useSafeArea: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(20),
+          // bottom: Radius.circular(20),
+        ),
+      ),
+      builder: (BuildContext context) {
+        return CustomBottomSheet(drug: drug, text: string);
+      },
+    );
   }
 }
