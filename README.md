@@ -24,7 +24,8 @@ samples, guidance on mobile development, and a full API reference.
 ![CSS](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
 
-Welcome to PharmiLink: Swift Pharmacy Search, a project crafted with a passion for quick and efficient medication search. Our goal is to simplify the process of finding the right medication and locating the nearest pharmacy.
+## Welcome to PharmiLink: 
+Swift Pharmacy Search, a project crafted with a passion for quick and efficient medication search. Our goal is to simplify the process of finding the right medication and locating the nearest pharmacy.
 
 
 ![Alt text](img/logo.png)
@@ -99,14 +100,14 @@ We welcome contributions! If you'd like to contribute to PharmiLink, please foll
 
 ## Screenshots
 
-![PharmiLink Screenshot 1](![Alt text](img/pharmalink1.jpg))
-![PharmiLink Screenshot 2](![Alt text](img/pharmalink.jpg))
+![Alt text](img/pharmalink1.jpg)
+![Alt text](img/pharmalink.jpg)
 ![Alt text](img/pharmalink2.jpg)
 ## Team
 
 This project was brought to you by a dedicated team of developers:
 
-### mahmoud yossef
+### Mahmoud youssef
 - [GitHub](https://github.com/MahmoudYoussefSdiek)
 - [LinkedIn](https://www.linkedin.com/in/mahmoudyoussefsdiek/)
 - [Email](@example.com)
