@@ -27,7 +27,7 @@ samples, guidance on mobile development, and a full API reference.
 Welcome to PharmiLink: Swift Pharmacy Search, a project crafted with a passion for quick and efficient medication search. Our goal is to simplify the process of finding the right medication and locating the nearest pharmacy.
 
 
-![Alt text](img/background3.png)
+![Alt text](img/logo.png)
 
 PharmiLink is a revolutionary app that simplifies the process of finding the right medication and the nearest pharmacy. In a world where quick access to healthcare is crucial, PharmiLink comes to the rescue.
 
