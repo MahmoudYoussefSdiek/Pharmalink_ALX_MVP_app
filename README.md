@@ -106,18 +106,18 @@ We welcome contributions! If you'd like to contribute to PharmiLink, please foll
 
 This project was brought to you by a dedicated team of developers:
 
-### [mahmoud yossef]
-- [GitHub](link-to-your-github)
-- [LinkedIn](link-to-your-linkedin)
-- [Email](your-email@example.com)
+[mahmoud yossef]
+- [GitHub](https://github.com/MahmoudYoussefSdiek)
+- [LinkedIn](https://www.linkedin.com/in/mahmoudyoussefsdiek/)
+- [Email](@example.com)
 
-### [bechoy ayad]
-- [GitHub](link-to-your-github)
+### bechoy ayad
+- [GitHub](https://github.com/bechoy-ayad)
 - [LinkedIn](link-to-your-linkedin)
-- [Email](your-email@example.com)
+- [Email](Beshoy.ayad@example.com)
 
-### [SALIHA BRIK]
-- [GitHub](shttps://github.com/salihabrik)
+[SALIHA BRIK]
+- [GitHub](https://github.com/salihabrik)
 - [LinkedIn](http://linkedin.com/in/salihabrik)
 - [Email](briksaliha@example.com)
 
