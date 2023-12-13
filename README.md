@@ -20,9 +20,13 @@ samples, guidance on mobile development, and a full API reference.
 ![Contributors](https://img.shields.io/badge/Contributors-2)
 [![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-007ACC?style=flat&logo=visual-studio-code&logoColor=white)](https://code.visualstudio.com/)
 ![Dart](https://img.shields.io/badge/Dart-0175C2?style=flat&logo=dart&logoColor=white)
-![Flutter](https://img.shields.io/badge/Flutter-E34F26?style=flat&logo=html5&logoColor=white)
-![Figma](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=Figma&logoColor=white)
+![Flutter](https://img.shields.io/badge/Flutter-E34F26?style=flat&logo=Flutter&logoColor=white)
+![Figma](https://img.shields.io/badge/Figma-1572B6?style=flat&logo=Figma&logoColor=white)
 ![Canva](https://img.shields.io/badge/Canva-F7DF1E?style=flat&logo=Canva&logoColor=black)
+![Android Studio](https://img.shields.io/badge/AndroidStudio-E34F26?style=flat&logo=AndroidStudio&logoColor=white)
+![Git](https://img.shields.io/badge/Git-1572B6?style=flat&logo=Git&logoColor=white)
+![Github](https://img.shields.io/badge/Github-F7DF1E?style=flat&logo=Github&logoColor=black)
+
 
 ## Welcome to PharmiLink: Swift Pharmacy Search, a project crafted with a passion for quick and efficient medication search. Our goal is to simplify the process of finding the right medication and locating the nearest pharmacy.
 
