@@ -20,9 +20,9 @@ samples, guidance on mobile development, and a full API reference.
 ![Contributors](https://img.shields.io/badge/Contributors-2)
 [![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-007ACC?style=flat&logo=visual-studio-code&logoColor=white)](https://code.visualstudio.com/)
 ![Dart](https://img.shields.io/badge/Dart-0175C2?style=flat&logo=dart&logoColor=white)
-![HTML](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
-![CSS](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
+![Flutter](https://img.shields.io/badge/Flutter-E34F26?style=flat&logo=html5&logoColor=white)
+![Figma](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=Figma&logoColor=white)
+![Canva](https://img.shields.io/badge/Canva-F7DF1E?style=flat&logo=Canva&logoColor=black)
 
 ## Welcome to PharmiLink: Swift Pharmacy Search, a project crafted with a passion for quick and efficient medication search. Our goal is to simplify the process of finding the right medication and locating the nearest pharmacy.
 
@@ -66,11 +66,18 @@ Check out our live demo [here](https://www.loom.com/share/7bef02396ce04789b7c483
 
 ### Prerequisites
 
-- [Dart](https://dart.dev/)
-- [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
-- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
-- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+## Project Overview
 
+PharmiLink is a Flutter-based mobile app designed to simplify the process of finding the right medication and locating nearby pharmacies. The project utilizes technologies such as Dart, HTML5, CSS3, and JavaScript to deliver a seamless user experience.
+
+## Technologies Used
+
+- **Flutter:** [Link to Flutter](https://flutter.dev/)
+- **Figma:** [Link to Figma](https://www.figma.com/)
+- **Canva:** [Link to Canva](https://www.canva.com/)
+- **Android Studio:** [Link to Android Studio](https://developer.android.com/studio)
+- **Git:** [Link to Git](https://git-scm.com/)
+- **GitHub:** [Link to GitHub Repository](https://github.com/your-username/pharmilink)
 
 ## Installation
 
