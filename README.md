@@ -106,7 +106,7 @@ We welcome contributions! If you'd like to contribute to PharmiLink, please foll
 
 This project was brought to you by a dedicated team of developers:
 
-[mahmoud yossef]
+### mahmoud yossef
 - [GitHub](https://github.com/MahmoudYoussefSdiek)
 - [LinkedIn](https://www.linkedin.com/in/mahmoudyoussefsdiek/)
 - [Email](@example.com)
@@ -116,7 +116,7 @@ This project was brought to you by a dedicated team of developers:
 - [LinkedIn](link-to-your-linkedin)
 - [Email](Beshoy.ayad@example.com)
 
-[SALIHA BRIK]
+### SALIHA BRIK
 - [GitHub](https://github.com/salihabrik)
 - [LinkedIn](http://linkedin.com/in/salihabrik)
 - [Email](briksaliha@example.com)
