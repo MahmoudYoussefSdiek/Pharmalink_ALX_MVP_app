@@ -1,29 +1,12 @@
-# pharmalink
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
 # PharmiLink: Swift Pharmacy Search
 
 ![Contributors](https://img.shields.io/badge/Contributors-2)
-[![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-007ACC?style=flat&logo=visual-studio-code&logoColor=white)](https://code.visualstudio.com/)
 ![Dart](https://img.shields.io/badge/Dart-0175C2?style=flat&logo=dart&logoColor=white)
 ![Flutter](https://img.shields.io/badge/Flutter-E34F26?style=flat&logo=Flutter&logoColor=white)
 ![Figma](https://img.shields.io/badge/Figma-1572B6?style=flat&logo=Figma&logoColor=white)
 ![Canva](https://img.shields.io/badge/Canva-F7DF1E?style=flat&logo=Canva&logoColor=black)
 ![Android Studio](https://img.shields.io/badge/AndroidStudio-E34F26?style=flat&logo=AndroidStudio&logoColor=white)
+[![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-007ACC?style=flat&logo=visual-studio-code&logoColor=white)](https://code.visualstudio.com/)
 ![Git](https://img.shields.io/badge/Git-1572B6?style=flat&logo=Git&logoColor=white)
 ![Github](https://img.shields.io/badge/Github-F7DF1E?style=flat&logo=Github&logoColor=black)
 
@@ -117,10 +100,10 @@ We welcome contributions! If you'd like to contribute to PharmiLink, please foll
 
 This project was brought to you by a dedicated team of developers:
 
-### Mahmoud youssef
+### Mahmoud Youssef
 - [GitHub](https://github.com/MahmoudYoussefSdiek)
 - [LinkedIn](https://www.linkedin.com/in/mahmoudyoussefsdiek/)
-- [Email](@example.com)
+- [Email](mahmoudyoussefsdiekmd@gmail.com)
 
 ### bechoy ayad
 - [GitHub](https://github.com/bechoy-ayad)
