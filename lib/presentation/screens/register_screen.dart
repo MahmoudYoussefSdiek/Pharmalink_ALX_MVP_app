@@ -151,7 +151,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         child: Align(
           alignment: Alignment.bottomCenter,
           child: Container(
-            margin: EdgeInsets.only(bottom: 10), // Adjust the margin as needed
+            margin: EdgeInsets.only(bottom: 10),
             child: Opacity(
               opacity: 0.50,
               child: Container(

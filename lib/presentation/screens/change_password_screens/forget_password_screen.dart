@@ -79,7 +79,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
         child: Align(
           alignment: Alignment.bottomCenter,
           child: Container(
-            margin: const EdgeInsets.only(bottom: 10), // Adjust the margin as needed
+            margin: const EdgeInsets.only(bottom: 10),
             child: Opacity(
               opacity: 0.50,
               child: Container(

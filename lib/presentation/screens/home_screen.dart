@@ -84,46 +84,43 @@ class _HomeScreenState extends State<HomeScreen> {
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: const BorderRadius.horizontal(
-                        left: Radius.circular(30), // Adjust the value as needed
-                        right:
-                            Radius.circular(30), // Adjust the value as needed
+                        left: Radius.circular(30),
+                        right: Radius.circular(30),
                       ),
                       color: Colors
-                          .grey[200], // Adjust the background color as needed
+                          .grey[200],
                     ),
                     child: SizedBox(
-                      width: double.infinity, // Adjust the width as needed
+                      width: double.infinity,
                       child: TextField(
                         controller: _searchController,
                         textAlign: TextAlign.center,
                         textAlignVertical: TextAlignVertical.center,
-                          style: const TextStyle(
-                            color: Colors.black,
-                            // fontSize: 12,
-                            // fontWeight: FontWeight.w700,
-                            // letterSpacing: 0.50,
-                          ),
+                        style: const TextStyle(
+                          color: Colors.black,
+                          // fontSize: 12,
+                          // fontWeight: FontWeight.w700,
+                          // letterSpacing: 0.50,
+                        ),
                         decoration: InputDecoration(
                           hintText: "Search for drugs...",
                           hintStyle: const TextStyle(
-                              color: Color(0xFF9098B1),
-                              fontSize: 12,
-                              fontWeight: FontWeight.w700,
-                              letterSpacing: 0.50,
+                            color: Color(0xFF9098B1),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w700,
+                            letterSpacing: 0.50,
                           ),
                           contentPadding:
                               const EdgeInsets.symmetric(horizontal: 20),
-                          border: InputBorder.none, // Remove default border
+                          border: InputBorder.none,
                           suffixIcon: IconButton(
                             icon: const Icon(Icons.search, color: Colors.green),
                             onPressed: () {
-                              // Handle search button press
                               _handleSearch(_searchController.text);
                             },
                           ),
                         ),
                         onChanged: (value) {
-                          // Update suggestions dynamically based on user input
                           _updateSuggestions(value);
                         },
                       ),
@@ -132,7 +129,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   const SizedBox(height: 16),
                   _suggestedDrugs.isNotEmpty
                       ? _buildSuggestions()
-                      : Container(height: 200,),
+                      : Container(
+                          height: 200,
+                        ),
                 ],
               ),
             ),
@@ -146,11 +145,10 @@ class _HomeScreenState extends State<HomeScreen> {
     return Container(
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.vertical(
-          top: Radius.circular(20), // Adjust the value as needed
-          bottom: Radius.circular(20), // Adjust the value as needed
+          top: Radius.circular(20),
+          bottom: Radius.circular(20),
         ),
-        color: Colors
-            .grey[200], // Adjust the background color as needed
+        color: Colors.grey[200],
       ),
       height: 200,
       width: double.infinity,
@@ -162,7 +160,6 @@ class _HomeScreenState extends State<HomeScreen> {
             children: _suggestedDrugs
                 .map((drug) => GestureDetector(
                       onTap: () {
-                        // Handle suggestion tap
                         setState(() {
                           _selectedDrug = drug;
                           _searchController.text = drug;
@@ -185,7 +182,6 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _updateSuggestions(String input) {
-    // Filter drugs based on user input
     setState(() {
       _suggestedDrugs = _allDrugs
           .where((drug) => drug.toLowerCase().contains(input.toLowerCase()))
@@ -195,9 +191,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _handleSearch(String drug) async {
     print("Searching for $_selectedDrug...");
-    Map<String, dynamic> keyValuePairs = await fetchDataFromUrl(drug);
+    Map<String, dynamic> keyValuePairs = await _fetchDataFromUrl(drug);
     _showBottomSheet(drug, keyValuePairs);
-
   }
 
   Future _showBottomSheet(String drug, Map<String, dynamic> keyValuePairs) {
@@ -212,12 +207,15 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       builder: (BuildContext context) {
-        return CustomBottomSheet(drug: drug, keyValuePairs: keyValuePairs,);
+        return CustomBottomSheet(
+          drug: drug,
+          keyValuePairs: keyValuePairs,
+        );
       },
     );
   }
 
-  Future<Map<String, dynamic>> fetchDataFromUrl(String item) async {
+  Future<Map<String, dynamic>> _fetchDataFromUrl(String item) async {
     try {
       final url = Uri.parse('https://api.fda.gov/drug/event.json?search=$item');
       final response = await http.get(url);
@@ -225,14 +223,37 @@ class _HomeScreenState extends State<HomeScreen> {
       if (response.statusCode == 200) {
         final drugInfo = jsonDecode(response.body);
 
-        List<String> reaction = drugInfo['results'][0]['patient']['reaction'].map((element) => element['reactionmeddrapt']).toList().cast<String>();
-        String medicinal_product = drugInfo['results'][0]['patient']['drug'][0]['medicinalproduct'];
-        List<String> brand_name = drugInfo['results'][0]['patient']['drug'][0]['openfda']['brand_name'].map((element) => element).toList().cast<String>();
-        List<String> generic_name = drugInfo['results'][0]['patient']['drug'][0]['openfda']['generic_name'].map((element) => element.toString()).toList().cast<String>();
-        List<String> product_type = drugInfo['results'][0]['patient']['drug'][0]['openfda']['product_type'].map((element) => element.toString()).toList().cast<String>();
-        List<String> route = drugInfo['results'][0]['patient']['drug'][0]['openfda']['route'].map((element) => element.toString()).toList().cast<String>();
-        List<String> substance_name = drugInfo['results'][0]['patient']['drug'][0]['openfda']['substance_name'].map((element) => element.toString()).toList().cast<String>();
-
+        List<String> reaction = drugInfo['results'][0]['patient']['reaction']
+            .map((element) => element['reactionmeddrapt'])
+            .toList()
+            .cast<String>();
+        String medicinal_product =
+            drugInfo['results'][0]['patient']['drug'][0]['medicinalproduct'];
+        List<String> brand_name = drugInfo['results'][0]['patient']['drug'][0]
+                ['openfda']['brand_name']
+            .map((element) => element)
+            .toList()
+            .cast<String>();
+        List<String> generic_name = drugInfo['results'][0]['patient']['drug'][0]
+                ['openfda']['generic_name']
+            .map((element) => element.toString())
+            .toList()
+            .cast<String>();
+        List<String> product_type = drugInfo['results'][0]['patient']['drug'][0]
+                ['openfda']['product_type']
+            .map((element) => element.toString())
+            .toList()
+            .cast<String>();
+        List<String> route = drugInfo['results'][0]['patient']['drug'][0]
+                ['openfda']['route']
+            .map((element) => element.toString())
+            .toList()
+            .cast<String>();
+        List<String> substance_name = drugInfo['results'][0]['patient']['drug']
+                [0]['openfda']['substance_name']
+            .map((element) => element.toString())
+            .toList()
+            .cast<String>();
 
         return {
           'medicinal product': medicinal_product,

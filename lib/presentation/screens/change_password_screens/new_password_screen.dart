@@ -3,7 +3,6 @@ import 'package:pharmalink/presentation/components/widgets/custom_button.dart';
 import 'package:pharmalink/presentation/components/widgets/custom_text_form_field.dart';
 import 'package:pharmalink/presentation/components/widgets/logo_widget.dart';
 import 'package:pharmalink/presentation/screens/home_screen.dart';
-import 'package:pharmalink/presentation/screens/log_in_screen.dart';
 
 
 class NewPasswordScreen extends StatefulWidget {
@@ -82,7 +81,7 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
         child: Align(
           alignment: Alignment.bottomCenter,
           child: Container(
-            margin: const EdgeInsets.only(bottom: 10), // Adjust the margin as needed
+            margin: const EdgeInsets.only(bottom: 10),
             child: Opacity(
               opacity: 0.50,
               child: Container(

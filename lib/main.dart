@@ -11,7 +11,6 @@ class Pharmalink extends StatelessWidget {
   final AppRoute _appRoute = AppRoute();
   Pharmalink({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
